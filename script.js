@@ -19,23 +19,79 @@ let peerConnection;
 //     ]
 // }
 
+// const servers = {
+//     iceServers: [
+//         {
+//             // url: 'turn:numb.viagenie.ca',
+//             // credential: 'muazkh',
+//             // username: 'webrtc@live.com'
+
+//             // url: 'turn:192.158.29.39:3478?transport=udp',
+//             // credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+//             // username: '28224511:1379330808'
+
+//             // url: 'turn:relay1.expressturn.com:3478',
+//             // username: 'efQ4A81BFTV6E3JTDD',
+//             // credential: 'Jz2evOzYm77j2RrE'
+//             urls: [
+//                 {
+//                     url: 'turn:numb.viagenie.ca',
+//                     credential: 'muazkh',
+//                     username: 'webrtc@live.com'
+//                 },
+//                 {
+//                     url: 'turn:192.158.29.39:3478?transport=udp',
+//                     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+//                     username: '28224511:1379330808'
+//                 },
+//                 {
+//                     url: 'turn:192.158.29.39:3478?transport=tcp',
+//                     credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+//                     username: '28224511:1379330808'
+//                 },
+//                 {
+//                     url: 'turn:turn.bistri.com:80',
+//                     credential: 'homeo',
+//                     username: 'homeo'
+//                  },
+//                  {
+//                     url: 'turn:turn.anyfirewall.com:443?transport=tcp',
+//                     credential: 'webrtc',
+//                     username: 'webrtc'
+//                 }
+//             ]
+//         }
+//     ]
+// }
+
 const servers = {
-    iceServers: [
-        {
-            // url: 'turn:numb.viagenie.ca',
-            // credential: 'muazkh',
-            // username: 'webrtc@live.com'
-
-            // url: 'turn:192.158.29.39:3478?transport=udp',
-            // credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-            // username: '28224511:1379330808'
-
-            url: 'turn:relay1.expressturn.com:3478',
-            username: 'efQ4A81BFTV6E3JTDD',
-            credential: 'Jz2evOzYm77j2RrE'
-        }
-    ]
-}
+    "username": "dc2d2894d5a9023620c467b0e71cfa6a35457e6679785ed6ae9856fe5bdfa269",
+    "ice_servers": [
+      {
+        "urls": "stun:global.stun.twilio.com:3478"
+      },
+      {
+        "username": "dc2d2894d5a9023620c467b0e71cfa6a35457e6679785ed6ae9856fe5bdfa269",
+        "credential": "tE2DajzSJwnsSbc123",
+        "urls": "turn:global.turn.twilio.com:3478?transport=udp"
+      },
+      {
+        "username": "dc2d2894d5a9023620c467b0e71cfa6a35457e6679785ed6ae9856fe5bdfa269",
+        "credential": "tE2DajzSJwnsSbc123",
+        "urls": "turn:global.turn.twilio.com:3478?transport=tcp"
+      },
+      {
+        "username": "dc2d2894d5a9023620c467b0e71cfa6a35457e6679785ed6ae9856fe5bdfa269",
+        "credential": "tE2DajzSJwnsSbc123",
+        "urls": "turn:global.turn.twilio.com:443?transport=tcp"
+      }
+    ],
+    "date_updated": "Fri, 01 May 2020 01:42:57 +0000",
+    "account_sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "ttl": "86400",
+    "date_created": "Fri, 01 May 2020 01:42:57 +0000",
+    "password": "tE2DajzSJwnsSbc123"
+  }
 
 let init = async() => {
     client = await AgoraRTM.createInstance(APP_ID)
@@ -51,7 +107,7 @@ let init = async() => {
 
     localStream = await navigator.mediaDevices.getUserMedia({
         video : true,
-        audio : false
+        audio : true
     })
     document.getElementById('user-1').srcObject = localStream
 }
@@ -93,7 +149,7 @@ let createPeerConnection = async (MemberId) => {
     if (!localStream) {
         localStream = await navigator.mediaDevices.getUserMedia({
             video : true,
-            audio : false
+            audio : true
         })
     }
 
