@@ -25,9 +25,14 @@ const servers = {
             // url: 'turn:numb.viagenie.ca',
             // credential: 'muazkh',
             // username: 'webrtc@live.com'
-            url: 'turn:192.158.29.39:3478?transport=udp',
-            credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-            username: '28224511:1379330808'
+
+            // url: 'turn:192.158.29.39:3478?transport=udp',
+            // credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+            // username: '28224511:1379330808'
+
+            url: 'turn:relay1.expressturn.com:3478',
+            username: 'efQ4A81BFTV6E3JTDD',
+            credential: 'Jz2evOzYm77j2RrE'
         }
     ]
 }
